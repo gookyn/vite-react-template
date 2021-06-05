@@ -1,0 +1,78 @@
+{
+  "name": "vite-react-template",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "gen:env": "node ./genLocalEnv.ts",
+    "start": "vite --mode development",
+    "start:dev": "vite --mode dev",
+    "start:test": "vite --mode test",
+    "start:prod": "vite --mode prod",
+    "build": "tsc && vite build --mode production",
+    "build:dev": "tsc && vite build --mode dev",
+    "build:test": "tsc && vite build --mode test",
+    "build:prod": "tsc && vite build --mode prod",
+    "serve": "vite preview",
+    "lint-staged": "lint-staged",
+    "lint-staged:js": "eslint  --debug --ext .js,.jsx,.ts,.tsx"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/*.{js,jsx,ts,tsx,json,html,css,less,scss,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/*.{js,jsx,ts,tsx}": "npm run lint-staged:js"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "dependencies": {
+    "antd-mobile": "^2.3.4",
+    "axios": "^0.21.1",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@types/node": "^15.3.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "@vitejs/plugin-react-refresh": "^1.3.1",
+    "commitizen": "^4.2.4",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-standard": "^5.0.0",
+    "husky": "^6.0.0",
+    "indexof": "^0.0.1",
+    "less": "^4.1.1",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0",
+    "typescript": "^4.2.4",
+    "vite": "^2.3.3",
+    "vite-plugin-imp": "^2.0.7"
+  }
+}
