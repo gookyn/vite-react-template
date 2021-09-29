@@ -5,7 +5,6 @@ import App from './app';
 import '@/utils/setup.ts';
 import '@/assets/css/reset.less';
 import '@/assets/css/base.less';
-import '@/assets/css/animate.less';
 
 ReactDOM.render(
   <BrowserRouter>
