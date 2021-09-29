@@ -5,17 +5,10 @@
     "es6": true,
     "node": true
   },
-  "extends": [
-    "standard",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "parser": "@typescript-eslint/parser",
+  "extends": ["alloy", "alloy/react", "alloy/typescript"],
   "parserOptions": {
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "no-unused-vars": 0,
     "react/prop-types": 0,

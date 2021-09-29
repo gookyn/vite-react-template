@@ -28,7 +28,6 @@
       "@/utils/*": ["./src/utils/*"]
     }
   },
-  "include": [
-    "./src" // 包含的目录及文件
-  ]
+  "include": ["./src/**/*", "./typings"],
+  "exclude": ["node_modules", "dist"]
 }

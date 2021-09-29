@@ -1,0 +1,24 @@
+{
+  "extends": ["stylelint-order", "stylelint-config-standard", "stylelint-config-recess-order"],
+  "rules": {
+    "indentation": 2,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["mixin", "extend", "content", "include"]
+      }
+    ],
+    "no-descending-specificity": null, // 禁止特异性较低的选择器在特异性较高的选择器之后重写
+    "font-family-no-missing-generic-family-keyword": null, // 关闭必须设置通用字体的规则
+    "function-calc-no-invalid": null, // 关闭对calc写法的校验
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": ["box-flex"] // 忽略某些未知属性的检测
+      }
+    ],
+    "declaration-colon-newline-after": null, // 一个属性过长的话可以写成多行
+    "media-feature-name-no-unknown": null, // 关闭禁止未知的媒体功能名
+    "order/properties-order": ["height", "line-height"] // 让height和line-height排列在一起
+  }
+}

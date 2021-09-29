@@ -36,6 +36,8 @@ export default ({ command, mode }: ConfigEnv) => {
         ],
       }),
     ],
+    // 避免cjs和es混合编写的三方库报错
+    build: { commonjsOptions: { transformMixedEsModules: true } },
   };
 
   // serve 独有配置
@@ -45,8 +47,8 @@ export default ({ command, mode }: ConfigEnv) => {
     };
     config.server = {
       host: '0.0.0.0',
-      port: 8201,
-      open: '/welcome',
+      port: 9101,
+      open: '/home',
       hmr: true,
       proxy: {
         '/api': {
@@ -76,7 +78,9 @@ function updateProcessEnv({ command, mode }: ConfigEnv): void {
 
     // 根据获取的key给对应的环境变量赋值
     for (const key in envFile) {
-      process.env[key] = envFile[key];
+      if (Object.prototype.hasOwnProperty.call(envFile, key)) {
+        process.env[key] = envFile[key];
+      }
     }
   } catch (e) {
     console.error(e);
@@ -84,7 +88,7 @@ function updateProcessEnv({ command, mode }: ConfigEnv): void {
 }
 
 // 获取可加载的环境变量文件路径
-function getEnvFilePath(mode: string): string | void {
+function getEnvFilePath(mode: string): any {
   const modeFilePath = path.join(__dirname, `./.env.${mode}`);
   const localFilePath = path.join(__dirname, './.env.local');
 

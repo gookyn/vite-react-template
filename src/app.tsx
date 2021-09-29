@@ -6,7 +6,7 @@ import './app.less';
 function App(props: any): React.FC<any> | any {
   return (
     <div className="app">
-      <Suspense fallback={<div></div>}>
+      <Suspense fallback={<div />}>
         <Switch>
           {Routers.map((route: any) => (
             <Route exact path={route.path} key={route.path}>
