@@ -14,9 +14,11 @@
     "build:test": "tsc && vite build --mode test",
     "build:prod": "tsc && vite build --mode prod",
     "serve": "vite preview",
-    "lint:js": "eslint --debug --ext .js,.jsx,.ts,.tsx",
-    "lint:less": "stylelint --fix src/**/*.less",
-    "format:write": "prettier --write ./src"
+    "format:check": "prettier --check ./src",
+    "format:write": "prettier --write ./src",
+    "lint:check": "eslint --debug --ext .js,.jsx,.ts,.tsx ./src",
+    "lint:js": "eslint --fix --debug --ext .js,.jsx,.ts,.tsx ./src",
+    "lint:less": "stylelint --fix src/**/*.less"
   },
   "husky": {
     "hooks": {
@@ -25,12 +27,19 @@
     }
   },
   "lint-staged": {
-    "src/*.{js,jsx,ts,tsx,json,html,css,less,scss,md}": [
-      "prettier --write",
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix --debug",
       "git add"
     ],
-    "src/*.{js,jsx,ts,tsx}": "yarn lint:js",
-    "src/**/*.less": "yarn lint:less"
+    "src/**/*.{js,jsx,ts,tsx,json,html,css,less,scss,md}": [
+      "prettier --write",
+      "prettier --check",
+      "git add"
+    ],
+    "src/**/*.less": [
+      "stylelint --fix",
+      "git add"
+    ]
   },
   "config": {
     "commitizen": {
